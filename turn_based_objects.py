@@ -48,9 +48,6 @@ def create_character():
     print(player)
     return player
 
-if __name__ == "__main__":
-    player = create_character()
-
 # Create a while loop to keep the player exploring through the dungeon until
 # they've defeated all the monsters or die
         
