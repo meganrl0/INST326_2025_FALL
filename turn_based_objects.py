@@ -2,6 +2,22 @@ import random
 import json
 
 # Megan Li
+# using magic method (__str__)
+class Player:
+    def __init__(self, name, character_class, stats):
+        self.name = name
+        self.character_class = character_class
+        self.hp = stats["hp"]
+        self.attack = stats["attack"]
+        self.defense = stats["defense"]
+        self.level = 1
+        self.exp = 0
+        self.inventory = []
+        self.location = 0
+        
+    def __str__(self):
+        return(f"{self.name} the {self.character_class.capitalize()} | "
+               f"Level: {self.level}, HP: {self.hp}, Attack: {self.attack}, Defense: {self.defense}")
 def create_character():
     print("Welcome to Turn-Based Objects!")
     name = input("What's your character's name? ").strip().capitalize()
@@ -25,25 +41,15 @@ def create_character():
             print("Invalid class. Please try again.")
         else: 
             print(f"You chose {input_class.capitalize()}! Creating your player...\n")
-            
-    player = {
-        "name": name,
-        "class": input_class,
-        "hp": chosen_class["hp"],
-        "attack": chosen_class["attack"],
-        "defense": chosen_class["defense"],
-        "level": 1,
-        "exp": 0,
-        "inventory": [],
-        "location": 0       
-    }
     
-    print(f"\nPlayer created! GLHF, {name} the {input_class.capitalize()}!\n")
+    player = Player(name, input_class, chosen_class)
+    
+    print(f"\nPlayer created! GLHF, {name} the {player.character_class.capitalize()}!\n")
+    print(player)
     return player
-        
-        
-player = create_character()
-print(player)
+
+if __name__ == "__main__":
+    player = create_character()
 
 # Create a while loop to keep the player exploring through the dungeon until
 # they've defeated all the monsters or die
