@@ -3,6 +3,7 @@ import json
 
 # Megan Li
 # using magic method (__str__)
+# using f-strings containing expressions
 class Player:
     def __init__(self, name, character_class, stats):
         self.name = name
