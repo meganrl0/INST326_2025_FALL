@@ -85,6 +85,78 @@ def create_character():
 
 # Create a while loop to keep the player exploring through the dungeon until
 # they've defeated all the monsters or die
+
+def combat_system(player, monster):
+    """ creates a turn-based combat system between the player and a monster
+    
+    Args:
+        player:  players stats
+        monster(dict): a dict that contains the monsters stats
+        
+    Returns:
+        None: updates players dict and gives live combat messages
+    """
+    print(f"\nA wild {monster['name']} has appeared!")
+    while player.hp > 0 and monster["hp"] > 0:
+        option = input("\nChoose one of the following: [A]ttack,"
+            "[I]nventory\n").lower()
+    
+        if option == 'a':
+            critical_hit = random.choice([1, 1, 1, 2])
+            dmg = player.attack * critical_hit
+            monster["hp"] -= dmg
+            if critical_hit == 2:
+                print(f"\nYou landed a critical hit! You dealt {dmg} "
+                      "damage!")
+            else:
+                print(f"\nYou dealt {dmg} damage!")
+        elif option == "i":
+            # inventory.use_item(player)
+            print("placeholder")
+            continue
+        else:
+            print("Invalid option.")
+            continue
+        if monster["hp"] <= 0:
+            print(f"\nYou have slain the {monster['name']}!")
+            player.exp += monster['exp']
+            print(f"{monster['exp']} exp was accquired from the {monster['name']}")
+            break
+        abs
+        print(f"\nThe {monster['name']} will now strike!")
+        if random.random() < monster['miss_chance']:
+            print(f"The {monster['name']} missed!")
+        else:
+            dmg = monster['attack']
+            player.hp -= dmg
+            print(f"The {monster['name']} has dealt {dmg} damage")
+        if player.hp <= 0:
+            print("\nYou have been killed...")         
+            break
+
+def dungeon_loop(player):
+    monsters =[
+        {"name": "Goblin", "hp": 30, "attack": 10, "exp": 20, "miss_chance": .1},
+        {"name": "Bat", "hp": 20, "attack": 15, "exp": 30, "miss_chance": .05},
+        {"name": "Slime", "hp": 50, "attack": 5, "exp": 20, "miss_chance": .1},
+        {"name": "Minotaur", "hp": 100, "attack": 15, "exp": 50, "miss_chance": .2}
+    ]
+    
+    while player.hp > 0 and monsters:
+        current_monster = monsters.pop(0)
+        combat_system(player, current_monster)
+        if player.hp <= 0:
+            print("\nYou died. Game over.")
+            return
+        
+    if not monsters:
+        print("\nYou have defeated all the monsters! yay!")
+def main():
+    player = create_character()
+    dungeon_loop(player)
+
+if __name__ == "__main__":
+    main()
         
         
         
