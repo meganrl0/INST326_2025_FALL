@@ -55,3 +55,26 @@ class inventory:
                 self.active[i] = item + " x" + n
             elif self.inv[i] == item:
                 self.inv[i] = item + " x" + n
+                
+class item:
+    """creates an object of the item class."""
+    def __init__(self, name, description, actions, stackable=False):
+        """Instantiates an item object.
+        Attributes: name(str) the name of the object, description (str) a
+        description of the item, its function and its lore, actions (list)
+        of things that the item can be used for and the effects of such actions,
+        stackable(bool) whether or not multiple copies of the item can occupy
+        one inventory slot with the default value being False."""
+        self.name = name
+        self.description = description
+        self.actions = actions
+        self.stackable = stackable
+    def use_item(self, action):
+        """Accesses item's actions attributes to enact a use of that item.
+        Args: action(list) a action that the item can be used for and its
+        effects (example: consumables like healing potions can be consumed to
+        restore health which deleats that instance of the item from the
+        inventory).
+        Returns: the effect(s) of that item's action."""
+        if action in self.actions:
+            return action[1]
