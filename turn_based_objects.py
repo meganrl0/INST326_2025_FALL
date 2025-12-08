@@ -84,6 +84,7 @@ def create_character():
     return player
 
 class Inventory:
+    # fix this later
     """Instantiates an object of the inventory class."""
     player_inv = [None, None, None, None, None,
            None, None, None, None, None,
