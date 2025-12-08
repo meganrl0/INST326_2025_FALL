@@ -91,7 +91,7 @@ class Inventory:
                             None, None, None, None, None,
                             None, None, None, None, None,
                             None, None, None, None, None],
-                 active = [None, None, None, None, None]):
+                 active=[None, None, None, None, None]):
         self.inv = inv
         self.active = active
     def add_item(self, item):
