@@ -86,13 +86,12 @@ def create_character():
 class Inventory:
     # fix this later
     """Instantiates an object of the inventory class."""
-    player_inv = [None, None, None, None, None,
-           None, None, None, None, None,
-           None, None, None, None, None,
-           None, None, None, None, None,
-           None, None, None, None, None]
-    player_active = [None, None, None, None, None]
-    def __init__(self, inv, active):
+    def __init__(self, inv=[None, None, None, None, None,
+                            None, None, None, None, None,
+                            None, None, None, None, None,
+                            None, None, None, None, None,
+                            None, None, None, None, None],
+                 active = [None, None, None, None, None]):
         self.inv = inv
         self.active = active
     def add_item(self, item):
