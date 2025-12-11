@@ -43,7 +43,8 @@ class Player:
         stats before beginning the game
         """
         return(f"{self.name} the {self.character_class.capitalize()} | "
-               f"Level: {self.level}, HP: {self.hp}, Attack: {self.attack}, Defense: {self.defense}")
+               f"Level: {self.level}, HP: {self.hp}, Attack: {self.attack}, \
+               Defense: {self.defense}")
         
 def create_character():
     """Asks the user to create a player character
@@ -66,7 +67,8 @@ def create_character():
     
     print("\nChoose your class:")
     for character, stats in character_classes.items():
-        print(f"- {character.capitalize()} (HP: {stats['hp']}, Attack: {stats['attack']}, Defense: {stats['defense']})")
+        print(f"- {character.capitalize()} (HP: {stats['hp']}, Attack: \
+              {stats['attack']}, Defense: {stats['defense']})")
      
     chosen_class = None
     input_class = ""
@@ -76,7 +78,8 @@ def create_character():
         if not chosen_class:
             print("Invalid class. Please try again.")
         else: 
-            print(f"You chose {input_class.capitalize()}! Creating your player...\n")
+            print(f"You chose {input_class.capitalize()}! Creating your \
+                  player...\n")
     
     player = Player(name, input_class, chosen_class)
     
@@ -177,6 +180,16 @@ character_growth = {
 }
 
 def level_up(player):
+    """Checks if the player has enough EXP to level up
+    
+        Args:
+            player (Player): the player object whose EXP and stats will be
+            updated accordingly
+            
+        Returns:
+            boolean: True if the player has leveled up at least once, False
+            otherwise 
+    """
     leveled_up = False
     growth = character_growth[player.character_class]
     
