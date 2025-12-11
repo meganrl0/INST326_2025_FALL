@@ -164,8 +164,35 @@ class Item:
         if action in self.actions:
             return action[1]
 
-# Create a while loop to keep the player exploring through the dungeon until
-# they've defeated all the monsters or die
+exp_bar = [0, 50, 100, 175, 275, 400, 550, 725, 925, 1150]
+
+character_growth = {
+    "warrior": {"hp": 20, "attack": 6, "defense": 3},
+    "mage": {"hp": 10, "attack": 5, "defense": 2},
+    "soldier": {"hp": 15, "attack": 4, "defense": 1}
+}
+
+def level_up(player):
+    leveled_up = False
+    growth = character_growth[player.character_class]
+    
+    while player.level < len(exp_bar) - 1 and player.exp >= exp_bar[player.level]:
+        player.exp -= exp_bar[player.level]
+        player.level += 1
+        leveled_up = True
+        
+        player.hp += growth["hp"]
+        player.attack += growth["attack"]
+        player.defense += growth["defense"]
+        
+        print("\nLEVEL UP!")
+        print(f"{player.name} reached Level {player.level}!")
+        print("Stat increases:")
+        print(f"  +{growth['hp']} HP to {player.hp}")
+        print(f"  +{growth['attack']} Attack to {player.attack}")
+        print(f"  +{growth['defense']} Defense to {player.defense}")
+        
+    return leveled_up
 
 # Exploration System by Danish Malik
 class ExplorationSystem:
@@ -262,8 +289,11 @@ def combat_system(player, monster):
             print(f"\nYou have slain the {monster['name']}!")
             player.exp += monster['exp']
             print(f"{monster['exp']} exp was accquired from the {monster['name']}")
+            
+            level_up(player)
+            
             break
-        # abs - remove this
+        
         print(f"\nThe {monster['name']} will now strike!")
         if random.random() < monster['miss_chance']:
             print(f"The {monster['name']} missed!")
@@ -337,14 +367,3 @@ if __name__ == "__main__":
         print(f"Final Inventory: {player.inventory}")
     else:
         print("\nGame over. You died in the dungeon.")
-
-        
-        
-        
-        
-    
-    
-    
-    
-    
-
