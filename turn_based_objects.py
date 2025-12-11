@@ -1,3 +1,4 @@
+from argparse import Action
 import random
 import json
 
@@ -93,6 +94,7 @@ class Inventory:
                  active=[None, None, None, None, None]):
         self.inv = inv
         self.active = active
+        
     def add_item(self, item):
         """adds item to the inventory.
         Args: item (str) the stackable item.
@@ -155,6 +157,7 @@ class Item:
         self.description = description
         self.actions = actions
         self.stackable = stackable
+        
     def use_item(self, action):
         """Accesses item's actions attributes to enact a use of that item.
         Args: action(list) a action that the item can be used for and its
@@ -254,7 +257,6 @@ class ExplorationSystem:
         else:
             return "nothing", "Nothing happens in this room."
 
-
 def combat_system(player, monster):
     """ creates a turn-based combat system between the player and a monster
     
@@ -280,7 +282,7 @@ def combat_system(player, monster):
             else:
                 print(f"\nYou dealt {dmg} damage!")
         elif option == "i":
-            inventory.use_item(player)
+            #Inventory.use_item(player)
             print("placeholder")
             continue
         else:
@@ -323,6 +325,7 @@ def dungeon_loop(player):
         
     if not monsters:
         print("\nYou have defeated all the monsters! yay!")
+        
 def main():
     player = create_character()
     dungeon_loop(player)
