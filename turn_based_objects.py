@@ -84,7 +84,6 @@ def create_character():
     return player
 
 class Inventory:
-    # fix this later
     """Instantiates an object of the inventory class."""
     def __init__(self, inv=[None, None, None, None, None,
                             None, None, None, None, None,
@@ -110,6 +109,7 @@ class Inventory:
                     i += 1
                 else:
                     self.inv[i] = item
+                    
     def subtract_item(self, item):
         """Subtracts item to the inventory.
         Args: item (str) the stackable item.
@@ -129,6 +129,7 @@ class Inventory:
                     ret = self.inv[i]
                     self.inv[i] = None
                     return ret
+                
     def stack_item(self, item, n):
         """Takes duplicate items and stacks the together.
         Args: item (str) the stackable item, n (int) the amount of copies of the
@@ -279,7 +280,7 @@ def combat_system(player, monster):
             else:
                 print(f"\nYou dealt {dmg} damage!")
         elif option == "i":
-            #inventory.use_item(player)
+            inventory.use_item(player)
             print("placeholder")
             continue
         else:
