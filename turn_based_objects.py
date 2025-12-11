@@ -1,4 +1,4 @@
-from argparse import Action
+from argparse import ArgumentParser
 import random
 import json
 
@@ -35,7 +35,7 @@ class Player:
         self.defense = stats["defense"]
         self.level = 1
         self.exp = 0
-        self.inventory = []
+        self.inventory = Inventory()
         self.location = 0
         
     def __str__(self):
@@ -282,7 +282,7 @@ def combat_system(player, monster):
             else:
                 print(f"\nYou dealt {dmg} damage!")
         elif option == "i":
-            #Inventory.use_item(player)
+            Inventory.use_item(player)
             print("placeholder")
             continue
         else:
