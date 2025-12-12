@@ -297,7 +297,7 @@ def combat_system(player, monster):
     
         if option == 'a':
             critical_hit = random.choice([1, 1, 1, 2])
-            dmg = player.attack * (2 if critical_hit == 2 else 1)
+            dmg = player.attack * (2 if critical_hit == 2 else 1) # conditional expression
             monster["hp"] -= dmg
             if critical_hit == 2:
                 print(f"\nYou landed a critical hit! You dealt {dmg} "
@@ -327,6 +327,7 @@ def combat_system(player, monster):
             dmg = monster['attack']
             player.hp -= dmg
             print(f"The {monster['name']} has dealt {dmg} damage")
+            f"{'!' if dmg > 0 else '... he missed...'}" # conditional expression
         if player.hp <= 0:
             print("\nYou have been killed...")         
             break
