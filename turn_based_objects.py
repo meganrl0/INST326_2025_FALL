@@ -332,6 +332,16 @@ def combat_system(player, monster):
             break
 
 def dungeon_loop(player):
+     """
+    controls the dungeon progression by putting the player against different
+    monsters and events
+    
+    Args:
+        player (Player): player object in dungeon
+    Returns:
+        None: runs combat encounters and prints messages. Loop end if the player
+        is dead
+    """
     monsters =[
         {"name": "Goblin", "hp": 30, "attack": 10, "exp": 20, "miss_chance": .1},
         {"name": "Bat", "hp": 20, "attack": 15, "exp": 30, "miss_chance": .05},
