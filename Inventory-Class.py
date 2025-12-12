@@ -1,11 +1,6 @@
 class inventory:
     """Instantiates an object of the inventory class."""
-    def __init__(self, inv=[None, None, None, None, None,
-                            None, None, None, None, None,
-                            None, None, None, None, None,
-                            None, None, None, None, None,
-                            None, None, None, None, None],
-                 active=[None, None, None, None, None]):
+    def __init__(self, inv=[None, None, None, None, None], active=[None]):
         self.inv = inv
         self.active = active
     def add_item(self, item):
@@ -80,6 +75,7 @@ class item:
         Returns: the effect(s) of that item's action."""
         if action in self.actions:
             return action[1]
+
 
 
 
