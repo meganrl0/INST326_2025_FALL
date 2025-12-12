@@ -140,6 +140,8 @@ class Inventory:
                 self.active[i] = item + " x" + n
             elif self.inv[i] == item:
                 self.inv[i] = item + " x" + n
+    def __str__(self):
+        return f"Active: {self.active} \nBag: {self.inv}"
                 
 class Item:
     """creates an object of the item class."""
