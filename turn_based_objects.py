@@ -322,6 +322,7 @@ def dungeon_loop(player):
         {"name": "Slime", "hp": 50, "attack": 5, "exp": 20, "miss_chance": .1},
         {"name": "Minotaur", "hp": 100, "attack": 15, "exp": 50, "miss_chance": .2}
     ]
+    monsters.sort(key=lambda m: m["hp"])
     
     while player.hp > 0 and monsters:
         current_monster = monsters.pop(0)
