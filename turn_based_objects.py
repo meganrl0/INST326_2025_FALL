@@ -332,7 +332,7 @@ def combat_system(player, monster):
             break
 
 def dungeon_loop(player):
-     """
+    """
     controls the dungeon progression by putting the player against different
     monsters and events
     
