@@ -274,7 +274,7 @@ class ExplorationSystem:
 
         # Handle item discovery
         elif "Potion" in event or "Sword" in event:
-            player.inventory.append(event)
+            player.inventory.add_item(event)
             return "item", f"You found a {event}!"
 
         # Handle empty rooms
