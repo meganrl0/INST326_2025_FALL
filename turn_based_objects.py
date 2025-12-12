@@ -2,9 +2,6 @@ from argparse import ArgumentParser
 import random
 import json
 
-# Megan Li
-# using magic method (__str__)
-# using f-strings containing expressions
 class Player:
     """Represents a player character.
 
