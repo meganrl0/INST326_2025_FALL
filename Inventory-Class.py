@@ -55,6 +55,7 @@ class inventory:
             elif self.inv[i] == item:
                 self.inv[i] = item + " x" + n
     def __str__(self):
+        """Converts the active and inv into string representations of themselves."""
         return f"Active: {self.active} \nBag: {self.inv}"
                 
 class item:
@@ -79,6 +80,7 @@ class item:
         Returns: the effect(s) of that item's action."""
         if action in self.actions:
             return action[1]
+
 
 
 
