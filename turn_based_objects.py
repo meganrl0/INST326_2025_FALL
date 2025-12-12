@@ -88,40 +88,41 @@ class Inventory:
         
     def add_item(self, item):
         """adds item to the inventory.
-        Args: item (str) the stackable item.
+        Args: item (str) the item to be added.
         Side Effects, changes a None value in the inventory to item."""
+        track_num = 1
         for i in self.active:
-            if self.active[i] != None:
-                i += 1
-            else:
+            iter = self.active[i]
+            if iter == None:
                 self.active[i] = item
-        if i == 4:
-            i = 0
-            for i in self.inv:
-                if self.inv[i] != None:
-                    i += 1
-                else:
-                    self.inv[i] = item
+                track_num -= 1
+                break
+        if track_num == 1:
+            for j in self.inv:
+                if self.inv[j] == None:
+                    self.inv[j] = item
+                    track_num -= 1
                     
     def subtract_item(self, item):
         """Subtracts item to the inventory.
-        Args: item (str) the stackable item.
+        Args: item (str) the item to be removed.
         Returns item (str)
         Side Effects, changes a item value in the inventory to None."""
+        track_num = 1
         for i in self.active:
-            if self.active[i] == None:
-                i += 1
+            iter = self.active[i]
+            if iter == item:
+                self.active[i] = None
+                track_num -= 1
+                return iter
+        for j in self.inv:
+            if track_num == 0:
+                break
             else:
-                self.active[i] = item
-        if i == 4:
-            i = 0
-            for i in self.inv:
-                if self.inv[i] == None:
-                    i += 1
-                else:
-                    ret = self.inv[i]
-                    self.inv[i] = None
-                    return ret
+                ret = self.inv[j]
+                self.inv[j] = None
+                track_num -= 1
+                return ret
                 
     def stack_item(self, item, n):
         """Takes duplicate items and stacks the together.
