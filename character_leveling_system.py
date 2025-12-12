@@ -7,6 +7,16 @@ character_growth = {
 }
 
 def level_up(player):
+    """Checks if the player has enough EXP to level up
+        
+        Args:
+            player (Player): the player object whose EXP and stats will be
+            updated accordingly
+
+        Returns:
+            boolean: True if the player has leveled up at least once, False
+            otherwise
+    """
     leveled_up = False
     growth = character_growth[player.character_class]
     
