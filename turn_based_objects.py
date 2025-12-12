@@ -206,10 +206,18 @@ def level_up(player):
 # Exploration System by Danish Malik
 class ExplorationSystem:
     """
-    Handles dungeon exploration and random events.
+    Handles dungeon exploration and all random events that occur
+    when a player enters a new room, including item discovery,
+    monster encounters, and empty rooms.
     """
 
     def __init__(self, total_rooms):
+        """
+        Instantiates an ExplorationSystem object.
+
+        Args:
+            total_rooms (int): The total number of rooms in the dungeon.
+        """
         self.total_rooms = total_rooms
 
         # Event probabilities
@@ -238,7 +246,18 @@ class ExplorationSystem:
         }
 
     def explore(self, player):
-        """Move the player forward one room and trigger a random event."""
+        """
+        Moves the player forward by one room and determines what event 
+        occurs based on weighted probabilities.
+
+        Args:
+            player (Player): The player object whose location will be 
+            updated and who may encounter monsters or find items.
+
+        Returns:
+            tuple(str, str): A tuple containing:
+                - event type ("monster", "item", "nothing")
+                - a description or name associated with that event"""
         player.location += 1
 
         # Check if player reached the final room
