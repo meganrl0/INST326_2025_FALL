@@ -1,6 +1,5 @@
 from argparse import ArgumentParser
 import random
-import json
 
 class Player:
     """Represents a player character.
@@ -56,9 +55,9 @@ def create_character():
     name = input("What's your character's name? ").strip().capitalize()
     
     character_classes = {
-        "warrior": {"hp": 120, "attack": 10, "defense": 8},
-        "mage": {"hp": 90, "attack": 14, "defense": 4},
-        "soldier": {"hp": 70, "attack": 18, "defense": 2}
+        "warrior": {"hp": 120, "attack": 10, "defense": 8, "inventory": "iron sword"},
+        "mage": {"hp": 90, "attack": 14, "defense": 4, "inventory": "strength potion"},
+        "soldier": {"hp": 70, "attack": 18, "defense": 2, "inventory": "steel dagger"}
     }
     
     print("\nChoose your class:")
