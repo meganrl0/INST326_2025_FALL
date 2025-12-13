@@ -82,7 +82,7 @@ def create_character():
 
 class Inventory:
     """Instantiates an object of the inventory class."""
-    def __init__(self, inv=[None, None, None, None, None,], active=[None]):
+    def __init__(self, active=[None], inv=[None, None, None, None, None,]):
         self.inv = inv
         self.active = active
         
