@@ -92,14 +92,13 @@ class Inventory:
         Side Effects, changes a None value in the inventory to item."""
         track_num = 1
         for i in self.active:
-            iter = self.active[i]
-            if iter == None:
+            if i == None:
                 self.active[i] = item
                 track_num -= 1
                 break
         if track_num == 1:
             for j in self.inv:
-                if self.inv[j] == None:
+                if j == None:
                     self.inv[j] = item
                     track_num -= 1
                     
@@ -110,8 +109,7 @@ class Inventory:
         Side Effects, changes a item value in the inventory to None."""
         track_num = 1
         for i in self.active:
-            iter = self.active[i]
-            if iter == item:
+            if i == item:
                 self.active[i] = None
                 track_num -= 1
                 return iter
@@ -119,7 +117,7 @@ class Inventory:
             if track_num == 0:
                 break
             else:
-                ret = self.inv[j]
+                ret = j
                 self.inv[j] = None
                 track_num -= 1
                 return ret
