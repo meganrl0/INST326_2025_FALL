@@ -124,7 +124,7 @@ class Inventory:
                 track_num -= 1
                 return ret
                 
-    def stack_item(self, item, n):
+    def stack_item(self, item, n=2):
         """Takes duplicate items and stacks the together.
         Args: item (str) the stackable item, n (int) the amount of copies of the
         item are being stacked on to the original.
