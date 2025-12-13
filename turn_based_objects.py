@@ -90,37 +90,30 @@ class Inventory:
         """adds item to the inventory.
         Args: item (str) the item to be added.
         Side Effects, changes a None value in the inventory to item."""
-        track_num = 1
+        track_num = 0
         for i in self.active:
             if i == None:
                 self.active[i] = item
-                track_num -= 1
                 break
-        if track_num == 1:
+            else:
+                track_num +=1
+        if track_num > len(self.active):
+            track_num = 0
             for j in self.inv:
                 if j == None:
                     self.inv[j] = item
-                    track_num -= 1
+                    break
+                else:
+                    track_num += 1
                     
     def subtract_item(self, item):
         """Subtracts item to the inventory.
         Args: item (str) the item to be removed.
         Returns item (str)
         Side Effects, changes a item value in the inventory to None."""
-        track_num = 1
-        for i in self.active:
-            if i == item:
-                self.active[i] = None
-                track_num -= 1
-                return iter
-        for j in self.inv:
-            if track_num == 0:
-                break
-            else:
-                ret = j
-                self.inv[j] = None
-                track_num -= 1
-                return ret
+        discard = self.inv[self.inv.index(item)]
+        self.inv[self.inv.index(item)] = None
+        return discard
                 
     def stack_item(self, item, n=2):
         """Takes duplicate items and stacks the together.
@@ -159,7 +152,9 @@ class Item:
         inventory).
         Returns: the effect(s) of that item's action."""
         if action in self.actions:
-            return action[1]
+            return action
+        else:
+            return "Not a valid action"
 
 exp_bar = [0, 50, 100, 175, 275, 400, 550, 725, 925, 1150]
 
@@ -313,8 +308,8 @@ def combat_system(player, monster):
             else:
                 print(f"\nYou dealt {dmg} damage!")
         elif option == "i":
-            Item.use_item(player)
-            print("placeholder")
+            Item.use_item(player.active[0].actions)
+            print(f"You used a {player.active[0].name}")
             continue
         else:
             print("Invalid option.")
