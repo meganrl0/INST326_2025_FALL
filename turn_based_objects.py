@@ -309,7 +309,7 @@ def combat_system(player, monster):
             else:
                 print(f"\nYou dealt {dmg} damage!")
         elif option == "i":
-            Item.use_item(player.active[0].actions)
+            Item.use_item(player.inventory.active[0].actions)
             print(f"You used a {player.inventory.active[0].name}")
             continue
         else:
