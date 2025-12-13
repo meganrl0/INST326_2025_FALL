@@ -274,16 +274,16 @@ class ExplorationSystem:
 
         # Handle item discovery
         elif "Healing" in event:
-            player.inventory.add_item("Healing Potion")
+            player.inventory.add_item(Item("Healing Potion", "Consumable: increases HP"))
             return "item", f"You found a {event}!"
         elif "Strength" in event:
-            player.inventory.add_item("Strength Potion")
+            player.inventory.add_item(Item("Strength Potion", "Consumable: Increases Attack Damage"))
             return "item", f"You found a {event}!"
         elif "Sword" in event:
-            player.inventory.add_item("Iron Sword")
+            player.inventory.add_item(Item("Iron Sword", "Attack"))
             return "item", f"You found a {event}!"
         elif "Dagger" in event:
-            player.inventory.add_item("Steel Dagger")
+            player.inventory.add_item(Item("Steel Dagger", "Attack"))
             return "item", f"You found a {event}!"
 
         # Handle empty rooms
