@@ -309,11 +309,11 @@ def combat_system(player, monster):
             else:
                 print(f"\nYou dealt {dmg} damage!")
         elif option == "i":
+            if player.inventory.active[0] == None:
+                print("You don't have any items to use yet")
+                continue
             Item.use_item(player.inventory.active[0].actions)
             print(f"You used a {player.inventory.active[0].name}")
-            continue
-        else:
-            print("Invalid option.")
             continue
         if monster["hp"] <= 0:
             print(f"\nYou have slain the {monster['name']}!")
