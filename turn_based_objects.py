@@ -421,7 +421,7 @@ def parse_args():
                             help=("Please enter the amount of rooms you want"
                                   "to go through in the dungeon."))
     
-    return parser.parse_args(command)
+    return parser.parse_args()
 
 if __name__ == "__main__":
     main()
