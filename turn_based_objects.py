@@ -273,8 +273,17 @@ class ExplorationSystem:
             return "monster", event
 
         # Handle item discovery
-        elif "Potion" in event or "Sword" in event:
-            player.inventory.add_item(event)
+        elif "Healing" in event:
+            player.inventory.add_item("Healing Potion")
+            return "item", f"You found a {event}!"
+        elif "Strength" in event:
+            player.inventory.add_item("Strength Potion")
+            return "item", f"You found a {event}!"
+        elif "Sword" in event:
+            player.inventory.add_item("Iron Sword")
+            return "item", f"You found a {event}!"
+        elif "Dagger" in event:
+            player.inventory.add_item("Steel Dagger")
             return "item", f"You found a {event}!"
 
         # Handle empty rooms
