@@ -1,3 +1,4 @@
+
 from argparse import ArgumentParser
 import random
 
@@ -93,7 +94,7 @@ class Inventory:
         track_num = 0
         for i in self.active:
             if i == None:
-                self.active[i] = item
+                self.active[self.active.index(i)] = item
                 break
             else:
                 track_num +=1
@@ -101,7 +102,7 @@ class Inventory:
             track_num = 0
             for j in self.inv:
                 if j == None:
-                    self.inv[j] = item
+                    self.inv[self.inv.index(j)] = item
                     break
                 else:
                     track_num += 1
@@ -308,8 +309,8 @@ def combat_system(player, monster):
             else:
                 print(f"\nYou dealt {dmg} damage!")
         elif option == "i":
-            Item.use_item(player.inventory.active[0].actions)
-            print(f"You used a {player.active[0].name}")
+            Item.use_item(player.active[0].actions)
+            print(f"You used a {player.inventory.active[0].name}")
             continue
         else:
             print("Invalid option.")
