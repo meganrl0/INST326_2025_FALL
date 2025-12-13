@@ -315,7 +315,7 @@ def combat_system(player, monster):
             else:
                 print(f"\nYou dealt {dmg} damage!")
         elif option == "i":
-            Inventory.use_item(player)
+            Item.use_item(player)
             print("placeholder")
             continue
         else:
