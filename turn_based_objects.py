@@ -416,7 +416,8 @@ def parse_args(command):
     parser.add_argument("name", help="Please enter your character's name.")
     parser.add_argument("character class", help="Please Enter your character's class")
     parser.add_argument("number of rooms", help="Please enter the amount of rooms you want to go through.")
-return parser.parse_args(command)
+    
+    return parser.parse_args(command)
 
 if __name__ == "__main__":
     main()
