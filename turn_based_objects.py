@@ -407,6 +407,16 @@ def main():
         print(f"Final Inventory: {player.inventory}")
     else:
         print("\nGame over. You died in the dungeon.")
-        
+
+def parse_args(command):
+    """Allows command line arguments.
+    Args: command(str)
+    Returns: parsed arguments in command."""
+    parser = ArgumentParser()
+    parser.add_argument("name", help="Please enter your character's name.")
+    parser.add_argument("character class", help="Please Enter your character's class")
+    parser.add_argument("number of rooms", help="Please enter the amount of rooms you want to go through.")
+return parser.parse_args(command)
+
 if __name__ == "__main__":
     main()
