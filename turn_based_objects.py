@@ -150,7 +150,7 @@ class Item:
         one inventory slot with the default value being False."""
         self.name = name
         self.description = description
-        self.actions = actions
+        self.actions = actions if actions is not None else []
         self.stackable = stackable
         
     def use_item(self, action):
